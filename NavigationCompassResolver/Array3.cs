@@ -1,7 +1,5 @@
-﻿using System.Diagnostics;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 
 namespace NavigationCompassResolver;
 
@@ -9,10 +7,6 @@ namespace NavigationCompassResolver;
 public struct Array3<T> : IEquatable<Array3<T>>, IEqualityOperators<Array3<T>, Array3<T>, bool> where T : struct, IEquatable<T>
 {
     private T _;
-
-    public readonly T Item0 => this[0];
-    public readonly T Item1 => this[1];
-    public readonly T Item2 => this[2];
 
     public Array3(T _1, T _2, T _3)
     {
@@ -27,8 +21,6 @@ public struct Array3<T> : IEquatable<Array3<T>>, IEqualityOperators<Array3<T>, A
         => obj is Array3<T> a && Equals(a);
     public override readonly int GetHashCode()
         => HashCode.Combine(this[0], this[1], this[2]);
-    public override readonly string ToString()
-        => $"[{this[0]}, {this[1]}, {this[2]}]";
 
     public static bool operator ==(Array3<T> left, Array3<T> right)
         => left.Equals(right);

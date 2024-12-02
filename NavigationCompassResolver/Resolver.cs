@@ -235,8 +235,6 @@ public static class Resolver
         Matrix3x3 A = new(relationships[0][0] ? r0m : 0, relationships[1][0] ? r0m : 0, relationships[2][0] ? r0m : 0,
                           relationships[0][1] ? r1m : 0, relationships[1][1] ? r1m : 0, relationships[2][1] ? r1m : 0,
                           relationships[0][2] ? r2m : 0, relationships[1][2] ? r2m : 0, relationships[2][2] ? r2m : 0);
-        if (A.Determinant == 0)
-            return error;
         for (int i = 0; i < possibleResults.Length; i++)
         {
             Array3<int> r = possibleResults[i];

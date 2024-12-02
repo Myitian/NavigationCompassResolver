@@ -1,26 +1,19 @@
 ﻿namespace NavigationCompassResolver;
 
-public struct Matrix3x3(int a, int b, int c,
-                        int d, int e, int f,
-                        int g, int h, int i)
+public struct Matrix3x3(int m11, int m12, int m13, int m21, int m22, int m23, int m31, int m32, int m33)
 {
-    public int A = a;
-    public int B = b;
-    public int C = c;
-    public int D = d;
-    public int E = e;
-    public int F = f;
-    public int G = g;
-    public int H = h;
-    public int I = i;
+    public int M11 = m11;
+    public int M12 = m12;
+    public int M13 = m13;
+    public int M21 = m21;
+    public int M22 = m22;
+    public int M23 = m23;
+    public int M31 = m31;
+    public int M32 = m32;
+    public int M33 = m33;
 
-    public readonly int Determinant
-        => A * (E * I - F * H)
-         - B * (D * I - F * G)
-         + C * (D * H - E * G);
-
-    public static Array3<int> operator *(Matrix3x3 m33, Array3<int> m31)
-        => new(m33.A * m31[0] + m33.B * m31[1] + m33.C * m31[2],
-               m33.D * m31[0] + m33.E * m31[1] + m33.F * m31[2],
-               m33.G * m31[0] + m33.H * m31[1] + m33.I * m31[2]);
+    public static Array3<int> operator *(Matrix3x3 mat, Array3<int> vec)
+        => new(mat.M11 * vec[0] + mat.M12 * vec[1] + mat.M13 * vec[2],
+               mat.M21 * vec[0] + mat.M22 * vec[1] + mat.M23 * vec[2],
+               mat.M31 * vec[0] + mat.M32 * vec[1] + mat.M33 * vec[2]);
 }
